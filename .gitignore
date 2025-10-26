@@ -1,0 +1,38 @@
+# Node / Vite
+node_modules/
+dist/
+build/
+.vite/
+.eslintcache
+.cache/
+.tmp/
+.temp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Env
+.env*
+
+# Coverage / tests
+coverage/
+
+# Parcel/Next/other caches
+.parcel-cache/
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar
+*.gz
+
+# Local media/temp
+background flow/

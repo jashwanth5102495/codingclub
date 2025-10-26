@@ -1,0 +1,28 @@
+.scroll-video-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* behind nav and content */
+  pointer-events: none;
+}
+
+.scroll-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* fill viewport */
+  display: block;
+  filter: saturate(1.05) contrast(1.05);
+  will-change: transform; /* hint GPU */
+}
+
+/* Optional aesthetic overlay to improve legibility over video */
+.scroll-video-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(12,12,18,0.35) 0%,
+    rgba(12,12,18,0.10) 40%,
+    rgba(12,12,18,0.25) 100%
+  );
+}

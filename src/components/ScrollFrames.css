@@ -1,0 +1,23 @@
+.scroll-frames-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* keep behind other content */
+  pointer-events: none;
+}
+
+.scroll-frames-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: none; /* background stays crisp unless nav overlay is visible */
+}
+
+/* Optional subtle overlay to blend frames with page background */
+.scroll-frames-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.35)),
+    radial-gradient(ellipse at 30% 10%, rgba(255,255,255,0.04), rgba(0,0,0,0.3));
+}
