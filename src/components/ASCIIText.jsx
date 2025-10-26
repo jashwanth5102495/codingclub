@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFontSize = 8 }) {
+export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFontSize = 8, animate = false }) {
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -21,17 +21,25 @@ export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFont
     const tCtx = tCanvas.getContext('2d');
     function drawTextTexture() {
       const w = 1024;
-      const h = 512;
+      const h = 420;
       tCanvas.width = w;
       tCanvas.height = h;
       tCtx.clearRect(0, 0, w, h);
-      tCtx.fillStyle = '#000';
-      tCtx.fillRect(0, 0, w, h);
-      tCtx.font = 'bold 250px "Courier New", monospace';
+      const str = String(text).replace(/_/g, ' ');
+      // Fit font size to canvas width
+      let fontSize = 220;
       tCtx.textAlign = 'center';
       tCtx.textBaseline = 'middle';
+      tCtx.font = `bold ${fontSize}px "Courier New", monospace`;
+      let width = tCtx.measureText(str).width;
+      const maxWidth = w * 0.88;
+      if (width > maxWidth) {
+        fontSize = Math.floor(fontSize * (maxWidth / width));
+        tCtx.font = `bold ${fontSize}px "Courier New", monospace`;
+        width = tCtx.measureText(str).width;
+      }
       tCtx.fillStyle = '#fff';
-      tCtx.fillText(String(text).replace(/_/g, ' '), w / 2, h / 2);
+      tCtx.fillText(str, w / 2, h / 2);
     }
     drawTextTexture();
 
@@ -72,11 +80,13 @@ export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFont
       uniform float mouse;
       uniform float uTime;
       uniform sampler2D uTexture;
+      uniform float uEnableWaves;
 
       void main() {
           float time = uTime;
           vec2 pos = vUv;
 
+          // Chromatic offsets independent of wave toggle
           float r = texture2D(uTexture, pos + cos(time * 2. - time + pos.x) * .01).r;
           float g = texture2D(uTexture, pos + tan(time * .5 + pos.x - time) * .01).g;
           float b = texture2D(uTexture, pos - cos(time * 2. + time + pos.y) * .01).b;
@@ -122,7 +132,7 @@ export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFont
 
     let raf = 0;
     function render(t) {
-      uniforms.uTime.value = t * 0.001;
+      uniforms.uTime.value = animate ? (t * 0.001) : 0.0;
       renderer.render(scene, camera);
 
       const cols = sample.width;
@@ -135,17 +145,25 @@ export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFont
         let line = '';
         for (let x = 0; x < cols; x++) {
           const i = (y * cols + x) * 4;
-          const r = data[i], g = data[i + 1], b = data[i + 2];
+          const r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
+          if (a < 16) { line += ' '; continue; }
           const brightness = (r + g + b) / 3 / 255;
-          const idx = Math.min(charset.length - 1, Math.max(0, Math.floor(brightness * (charset.length - 1))));
+          const idx = Math.min(charset.length - 1, Math.max(0, Math.floor((1 - brightness) * (charset.length - 1))));
           line += charset[idx];
         }
         out += line + '\n';
       }
       asciiPre.textContent = out;
-      raf = requestAnimationFrame(render);
+      if (animate) {
+        raf = requestAnimationFrame(render);
+      }
     }
-    raf = requestAnimationFrame(render);
+    if (animate) {
+      raf = requestAnimationFrame(render);
+    } else {
+      render(performance.now());
+    }
+
 
     window.addEventListener('resize', resize);
 
@@ -159,7 +177,7 @@ export default function ASCIIText({ text = 'Hey!', enableWaves = true, asciiFont
       material.dispose();
       geometry.dispose();
     };
-  }, [text, enableWaves, asciiFontSize]);
+  }, [text, enableWaves, asciiFontSize, animate]);
 
   return <div ref={mountRef} className="ascii-wrap" role="img" aria-label={text} />;
 }

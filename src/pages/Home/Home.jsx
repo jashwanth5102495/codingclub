@@ -124,27 +124,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Introducing section with ASCII text effect (centered) */}
-      <section id="introducing" className="reveal" aria-labelledby="introducingTitle">
-        <div className="section-title" style={{ textAlign: 'center' }}>
-          <h2 id="introducingTitle">Introducing</h2>
-          <div className="section-sub">ASCII-styled headline inspired by your reference.</div>
-        </div>
-        <div className="gallery-box ascii-wrap">
-          <ASCIIText text="Hey!" enableWaves={true} asciiFontSize={8} />
-        </div>
-      </section>
-
-      {/* Innovation Lab below the Introducing section */}
-      <section id="innovation" className="reveal" aria-labelledby="innovationTitle">
-        <div className="section-title" style={{ textAlign: 'center' }}>
-          <h2 id="innovationTitle">Innovation Lab</h2>
-          <div className="section-sub">Explore prototypes and experiments from the team.</div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <a href="/innovation.html" className="btn-primary">Open Innovation Lab</a>
-        </div>
-      </section>
 
       {/* Removed Upcoming Events section as requested */}
       {/* <Events /> */}
