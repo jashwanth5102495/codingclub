@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Lab 2025 – Team Pratham</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== BASE STYLES ===== */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0b0b1a;
+      color: #e0e0e0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      line-height: 1.7;
+    }
+
+    a { color: #00E5FF; text-decoration: none; }
+    a:hover { color: #6C63FF; }
+
+    /* ===== GLOWING BACKGROUND ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, #6C63FF33, #00E5FF33, #6C63FF33, #00E5FF33);
+      background-size: 400% 400%;
+      animation: bgMove 20s linear infinite;
+      z-index: -2;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== SPARKS ===== */
+    .spark {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      pointer-events: none;
+      animation: float 15s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+      50% { transform: translateY(-200px) translateX(100px); opacity: 0.5; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+    }
+
+    /* ===== HEADER ===== */
+    header.nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(20, 20, 40, 0.85);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .brand { font-weight: 700; color: #6C63FF; font-size: 1.2rem; }
+    nav a { margin: 0 1rem; transition: 0.3s; }
+    nav a:hover { color: #6C63FF; }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 6rem 2rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #6C63FF;
+      text-shadow: 0 0 10px #6C63FF;
+      margin-bottom: 1rem;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #00E5FF;
+      text-shadow: 0 0 6px #00E5FF;
+      margin-bottom: 2rem;
+    }
+
+    .hero p.lead {
+      max-width: 900px;
+      margin: auto;
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+
+    /* ===== SCROLL-DOWN ARROW ===== */
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #00E5FF;
+      text-shadow: 0 0 10px #00E5FF, 0 0 20px #6C63FF;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 10;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-15px); }
+      60% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(108, 99, 255, 0.2), 0 0 20px rgba(0, 229, 255, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section h2 {
+      color: #6C63FF;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #6C63FF33;
+    }
+
+    .section p {
+      color: #ccc;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+      border-top: 1px solid #333;
+    }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SPARKS ===== -->
+  <div id="sparks-container"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="nav">
+    <div class="brand">Innovation Lab 2025</div>
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#events">Events</a>
+      <a href="#top">Innovation</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <h1>Innovation Lab 2025 – The Journey of Team Pratham</h1>
+    <h2>A Chronicle of Leadership, Learning, and Innovation</h2>
+    <p class="lead">
+      The success of Innovation Lab 2025 stands as a shining example of what vision, mentorship, and teamwork can achieve at Akash Global College of Management and Science.
+    </p>
+
+    <!-- ===== SCROLL DOWN ARROW ===== -->
+    <div class="scroll-down" onclick="scrollToContent()">&#x21E3;</div>
+  </section>
+
+  <!-- ===== CONTENT SECTIONS ===== -->
+  <section class="section reveal">
+    <h2>The Beginning of an Idea</h2>
+    <p>
+      The vision for Innovation Lab 2025 was brought to life by two passionate students — Jashwanth (MCA – 1st Year) and Madhu Sudhan Reddy (BCA – 3rd Year) — who took the bold step of organizing a Hackathon aimed at enhancing students’ technical exposure. The event, held on 9th September 2025, challenged participants to design and develop interactive front-end web applications, putting their coding and creative skills to the test.
+    </p>
+    <p>
+      Jashwanth and Madhu Sudhan’s initiative was more than a competition — it was a learning movement. They ensured that every student, regardless of prior experience, gained the confidence to build and innovate.
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Building the Foundation</h2>
+    <p>
+      Before the hackathon commenced, participants attended training sessions led by Jashwanth and Madhu Sudhan, where they were introduced to essential web technologies such as HTML, CSS, and JavaScript, along with tools like Git and GitHub. These sessions helped students understand how professional developers work collaboratively on real-world projects using version control.
+    </p>
+    <p>
+      Their effort transformed beginners into confident learners and created a strong sense of community among participants.
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Formation of Team Pratham</h2>
+    <p>
+      After the day of coding, creativity, and collaboration, the Hackathon results were announced on 12th September 2025. From this event, a team of nine talented students emerged — forming Team Pratham, symbolizing “the first step toward excellence.”
+    </p>
+    <p>
+      Team Pratham became a symbol of determination, teamwork, and learning. Under the mentorship of Jashwanth and Madhu Sudhan, the team held sessions every Monday and Wednesday, learning to write clean code, debug efficiently, and collaborate effectively on projects.
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Guidance that Made it Possible</h2>
+    <p>
+      The leadership of Principal Dr. Channaveere Gowda and HOD Mr. Naveen M. V. Gowda played a crucial role in bringing the Innovation Lab to life. Their constant encouragement motivated students to push boundaries and embrace new technologies.
+    </p>
+    <p>
+      Special appreciation goes to Mr. Abhishek and Mr. Shashidhar, the teacher coordinators who stood beside the students at every stage — guiding, mentoring, and ensuring smooth execution of every session and event. Their mentorship created a balance between academic learning and practical exposure, helping students apply classroom knowledge to real-world problems.
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>From Campus to Corporate – Learning with Jasnav IT Solutions</h2>
+    <p>
+      After the successful hackathon, Team Pratham continued their journey by enrolling in a Front-End Beginner Level Course offered by Jasnav IT Solutions.
+    </p>
+    <p>
+      Students completed interactive modules, coding assignments, and four practical projects. This collaboration offered a taste of the corporate learning environment — complete with project deadlines, team collaboration, and continuous evaluation.
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <h2>A Legacy of Innovation</h2>
+    <p>
+      The Innovation Lab 2025 became a landmark event for Akash Global College of Management and Science, symbolizing how passion, leadership, and mentorship can transform learning into impact.
+    </p>
+    <p>
+      A heartfelt appreciation goes to Jashwanth and Madhu Sudhan, whose initiative and leadership turned a simple idea into an institutional achievement. Through this journey, Team Pratham emerged not only as developers but as pioneers of the college’s growing technical culture — inspiring future students to dream big and take the first step toward innovation.
+    </p>
+    <p style="text-align:center; color:#00E5FF; font-weight:700; font-size:1.2rem; margin-top:1rem;">
+      Innovation Lab 2025 – Where Curiosity Became Code, and Ideas Became Impact.
+    </p>
+  </section>
+
+
+<section class="done-by glass-box">
+  <h2>Done By</h2>
+  <ul>
+    <li><strong>System Architecture Design:</strong> Jashwanth Roa, Purshottam V</li>
+    <li><strong>Development:</strong> Purshottam V, Santhosh Gowda DA</li>
+    <li><strong>Data Gathering:</strong>PV Sai Likitha, Sahana K</li>
+    <li><strong>Testing:</strong> Abhishek, Naveen</li>
+    <li><strong>Deployment & Monitoring:</strong> Shashidhar, Suresh</li>
+  </ul>
+  <p>
+    We have followed the <strong>Agile Model</strong> for development purposes.
+  </p>
+</section>
+
+</section>
+
+  <footer>
+    © ANVESHAK CLUB — Technical Team • Built with ❤️
+  </footer>
+
+  <script>
+    // ===== SPARKS CREATION =====
+    const sparkContainer = document.getElementById('sparks-container');
+    for (let i = 0; i < 25; i++) {
+      const spark = document.createElement('div');
+      spark.classList.add('spark');
+      spark.style.width = `${Math.random()*6 + 4}px`;
+      spark.style.height = `${Math.random()*6 + 4}px`;
+      spark.style.top = `${Math.random()*100}%`;
+      spark.style.left = `${Math.random()*100}%`;
+      spark.style.animationDuration = `${Math.random()*15 + 10}s`;
+      sparkContainer.appendChild(spark);
+    }
+
+    // ===== REVEAL ON SCROLL =====
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+        if(revealTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    });
+
+    // ===== SCROLL DOWN FUNCTION =====
+    function scrollToContent() {
+      const firstSection = document.querySelector('.section');
+      firstSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
+
+
