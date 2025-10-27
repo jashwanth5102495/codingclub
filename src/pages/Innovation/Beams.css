@@ -1,0 +1,13 @@
+.beams-container {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  display: block;
+}
+
+/* Keep interactions for overlay content only */
+.beams-container canvas {
+  pointer-events: none;
+}

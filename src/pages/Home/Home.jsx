@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import Overlay from './Overlay.jsx';
+import React, { useEffect, useMemo, useState } from 'react';
 import Hero from './Hero.jsx';
 import About from './About.jsx';
 import Events from './Events.jsx';
@@ -7,7 +6,9 @@ import Certificates from './Certificates.jsx';
 import ScrollFrames from '../../components/ScrollFrames.jsx';
 
 import ImageTrail from '../../components/ImageTrail.jsx';
-import ASCIIText from '../../components/ASCIIText.jsx';
+import GlitchText from '../../components/GlitchText.jsx';
+import StarBorder from '../../components/StarBorder.jsx';
+import { Link } from 'react-router-dom';
 
 function Contact(){
   const [name,setName] = useState('');
@@ -15,7 +16,7 @@ function Contact(){
   const [message,setMessage] = useState('');
   const onSubmit = (e)=>{e.preventDefault();alert('Thanks! We will reach you on college channels.')}
   return (
-    <section id="contact" className="reveal" aria-labelledby="contactTitle">
+    <section id="contact" aria-labelledby="contactTitle">
       <div className="section-title">
         <h2 id="contactTitle">🔹 Contact & Connect</h2>
         <div className="section-sub">We’d love to hear from you! Whether you have questions, suggestions, or want to join Team Anveshak, feel free to reach out</div>
@@ -60,9 +61,6 @@ function Footer() {
 }
 
 export default function Home() {
-  const [overlayVisible, setOverlayVisible] = useState(true);
-  const [framesActive, setFramesActive] = useState(false);
-
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -85,33 +83,38 @@ export default function Home() {
     'https://picsum.photos/id/1030/300/300',
   ], []);
 
-  useEffect(() => {
-    const hero = document.getElementById('top');
-    const about = document.getElementById('about');
-    const flags = { top: false, about: false };
-    const update = () => setFramesActive(flags.top || flags.about);
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        const id = e.target.id;
-        if (id === 'top') flags.top = e.isIntersecting;
-        if (id === 'about') flags.about = e.isIntersecting;
-      });
-      update();
-    }, { threshold: 0.25 });
-    if (hero) obs.observe(hero);
-    if (about) obs.observe(about);
-    update();
-    return () => obs.disconnect();
-  }, []);
-
   return (
-    <main>
-      {framesActive && <ScrollFrames />}
-      {overlayVisible && <Overlay onClose={() => setOverlayVisible(false)} />}
+    <main style={{ color: '#fff', backgroundColor: '#000' }}>
+      <ScrollFrames anchorStart="#top" anchorEnd="#about" />
       <Hero />
       <About />
 
-      <section id="gallery" className="reveal gallery-section">
+      <section id="intro-glitch" className="section" style={{ backgroundColor: '#000' }}>
+        <div className="section-title" style={{ textAlign: 'center' }}>
+          <h2>Introducing</h2>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '8px' }}>
+          <GlitchText speed={0.6} enableShadows={true} enableOnHover={false} className="glitch-xl">Innovation Lab</GlitchText>
+        </div>
+        <div className="intro-copy" style={{ marginTop: '16px', maxWidth: '900px', margin: '16px auto', lineHeight: 1.6 }}>
+          <p>
+            Innovation Lab, founded on September 8, 2025, is a dynamic coding club created to bridge the gap between academic learning and real-world technological skills. The main motto of this club is to train students in trending and emerging technologies, empowering them to become industry-ready professionals capable of excelling in top companies.
+          </p>
+          <p>
+            Students are shortlisted through competitive events such as hackathons, coding challenges, and tech quizzes, ensuring that only the most passionate and talented individuals earn their place in the club. Once selected, members undergo specialized training sessions, workshops, and real-time project experiences guided by mentors and industry experts.
+          </p>
+          <p>
+            The Innovation Lab serves as a hub of creativity, innovation, and collaboration — a place where ideas are transformed into impactful solutions, and students grow into confident technologists ready to shape the future.
+          </p>
+          <div style={{ textAlign: 'center', marginTop: '12px' }}>
+              <StarBorder as={Link} to="/innovation-page" className="custom-class" color="cyan" speed="5s" thickness={1}>
+                Click here
+              </StarBorder>
+            </div>
+        </div>
+      </section>
+
+      <section id="gallery" className="gallery-section">
         <div className="section-title" style={{ textAlign: 'center' }}>
           <h2>Our Gallery</h2>
         </div>
@@ -123,7 +126,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       {/* Removed Upcoming Events section as requested */}
       {/* <Events /> */}

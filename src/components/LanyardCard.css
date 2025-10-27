@@ -1,0 +1,108 @@
+/* Lightweight CSS lanyard with strap, ring, photo and swinging ID card */
+
+.lanyard-card {
+  position: relative;
+  width: 220px;
+  height: 370px; /* includes strap + card */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  user-select: none;
+  perspective: 800px;
+}
+
+/* Strap above the card */
+.lanyard-strap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 140px;
+  border-radius: 14px;
+  background: #0b0b14;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+  /* subtle pattern along strap */
+  --stripe: rgba(255,255,255,0.15);
+  background-image:
+    repeating-linear-gradient(to bottom, transparent 0 26px, var(--stripe) 26px 28px, transparent 28px 54px);
+}
+
+/* Connector ring */
+.lanyard-ring {
+  position: absolute;
+  top: 128px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #111;
+  border: 3px solid #333;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+/* ID card */
+.lanyard-id {
+  position: absolute;
+  top: 160px; /* hangs from ring */
+  width: 200px;
+  height: 280px;
+  background: #f8f8f8;
+  color: #111;
+  border-radius: 16px;
+  box-shadow: 0 16px 42px rgba(0,0,0,0.35);
+  padding: 16px 14px;
+  text-align: center;
+  transform-origin: top center;
+}
+
+/* thin rope between ring and card */
+.lanyard-id::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 24px;
+  background: #111;
+  border-radius: 2px;
+}
+
+/* gentle swing */
+.swing { animation: lanyard-swing 5.2s ease-in-out infinite; }
+@keyframes lanyard-swing {
+  0%   { transform: rotate(-3deg); }
+  50%  { transform: rotate(3deg); }
+  100% { transform: rotate(-3deg); }
+}
+
+/* photo box */
+.lanyard-photo {
+  width: 92px;
+  height: 92px;
+  margin: 8px auto 12px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.lanyard-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* text styles */
+.lanyard-info { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.lanyard-name { font-weight: 700; font-size: 16px; letter-spacing: 0.3px; }
+.lanyard-role { font-weight: 500; font-size: 14px; color: #333; }
+.lanyard-dept { font-size: 13px; color: #555; }
+
+@media (max-width: 900px) {
+  .lanyard-card { transform: scale(0.92); }
+}

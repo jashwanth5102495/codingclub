@@ -14,7 +14,7 @@ export default function Certificates() {
   ];
 
   return (
-    <section id="certificates" className="reveal" aria-labelledby="certTitle">
+    <section id="certificates" aria-labelledby="certTitle">
       <div className="section-title">
         <h2 id="certTitle">Certificates</h2>
         <div className="section-sub">Certificates earned by team members and winners. Click to view full certificate.</div>

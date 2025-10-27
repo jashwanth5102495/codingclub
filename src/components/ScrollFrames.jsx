@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './ScrollFrames.css';
 
 // Scroll-driven frame animation using sequence of JPGs
@@ -15,12 +15,14 @@ function getSrc(i) {
   return `${base}background-flow/ezgif-frame-${pad3(i)}.jpg`;
 }
 
-export default function ScrollFrames() {
+export default function ScrollFrames({ anchorStart = null, anchorEnd = null }) {
   const canvasRef = useRef(null);
   const imagesRef = useRef([]);
   const frameRef = useRef(1); // current frame index 1..FRAME_COUNT
   const rafRef = useRef(0);
   const dprRef = useRef(window.devicePixelRatio || 1);
+  const rangeRef = useRef({ top: 0, bottom: Number.POSITIVE_INFINITY });
+  const [isActive, setIsActive] = useState(anchorStart == null && anchorEnd == null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -28,6 +30,22 @@ export default function ScrollFrames() {
     const ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
+
+    function computeRange() {
+      const startEl = anchorStart ? document.querySelector(anchorStart) : null;
+      const endEl = anchorEnd ? document.querySelector(anchorEnd) : null;
+      if (startEl && endEl) {
+        const startRect = startEl.getBoundingClientRect();
+        const endRect = endEl.getBoundingClientRect();
+        const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+        rangeRef.current = {
+          top: startRect.top + scrollY,
+          bottom: endRect.bottom + scrollY,
+        };
+      } else {
+        rangeRef.current = { top: 0, bottom: Number.POSITIVE_INFINITY };
+      }
+    }
 
     function setCanvasSize() {
       dprRef.current = window.devicePixelRatio || 1;
@@ -76,11 +94,15 @@ export default function ScrollFrames() {
     }
 
     function onScroll() {
-      // Map scroll progress to frame index
-      const doc = document.documentElement;
-      const scrollTop = doc.scrollTop || window.pageYOffset;
-      const max = doc.scrollHeight - doc.clientHeight;
-      const progress = max > 0 ? scrollTop / max : 0;
+      // Map scroll progress to frame index within the scoped range (if provided)
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+      const viewportMid = scrollTop + window.innerHeight / 2;
+      const { top, bottom } = rangeRef.current;
+      const inRange = viewportMid >= top && viewportMid <= bottom;
+      setIsActive(inRange);
+
+      const rangeLen = Math.max(bottom - top, 1);
+      const progress = Math.min(Math.max((viewportMid - top) / rangeLen, 0), 1);
       const target = Math.min(
         FRAME_COUNT,
         Math.max(1, Math.round(progress * (FRAME_COUNT - 1)) + 1)
@@ -95,11 +117,13 @@ export default function ScrollFrames() {
     }
 
     function onResize() {
+      computeRange();
       setCanvasSize();
       drawFrame(frameRef.current);
     }
 
     setCanvasSize();
+    computeRange();
     preload();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
@@ -108,10 +132,10 @@ export default function ScrollFrames() {
       window.removeEventListener('resize', onResize);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [anchorStart, anchorEnd]);
 
   return (
-    <div className="scroll-frames-wrap" aria-hidden="true">
+    <div className={`scroll-frames-wrap ${isActive ? 'active' : 'inactive'}`} aria-hidden="true">
       <canvas ref={canvasRef} className="scroll-frames-canvas" />
       <div className="scroll-frames-gradient" />
     </div>

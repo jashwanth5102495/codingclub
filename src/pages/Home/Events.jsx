@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Events() {
   return (
-    <section id="events" className="reveal" aria-labelledby="eventsTitle">
+    <section id="events" aria-labelledby="eventsTitle">
       <div className="section-title">
         <h2 id="eventsTitle">UPCOMMING EVENTS</h2>
         <div className="section-sub">

@@ -1,0 +1,5 @@
+.fuzzy-text-canvas {
+  display: block;
+  background: transparent;
+  pointer-events: auto;
+}

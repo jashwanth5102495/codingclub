@@ -3,6 +3,12 @@
   inset: 0;
   z-index: 0; /* keep behind other content */
   pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.scroll-frames-wrap.inactive {
+  opacity: 0;
 }
 
 .scroll-frames-canvas {

@@ -27,7 +27,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <aside className="hero-card reveal" aria-hidden="false">
+      <aside className="hero-card" aria-hidden="false">
         <div className="hero-card-header">
           <div className="card-title">Quick Stats</div>
           <div className="small">Since 2025</div>

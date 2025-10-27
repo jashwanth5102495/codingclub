@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './Innovation.css';
+import Hyperspeed from './Hyperspeed.jsx';
+import { hyperspeedPresets } from './hyperspeedPresets.js';
+import TypewriterText from '../../components/TypewriterText.jsx';
 
 export default function Innovation() {
   const sparksRef = useRef(null);
@@ -45,16 +48,16 @@ export default function Innovation() {
     <div className="innovation-page">
       <div ref={sparksRef} id="sparks-container" />
 
-      <header className="innovation-header">
-        <div className="brand">Innovation Lab 2025</div>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/#about">About</a>
-          <a href="/#events">Events</a>
-          <a href="#top">Innovation</a>
-          <a href="/#contact">Contact</a>
-        </nav>
-      </header>
+
+      {/* Welcome section with PixelBlast background and typed text */}
+      <section className="innovation-welcome" style={{ backgroundColor: '#000' }}>
+        <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+          <Hyperspeed effectOptions={hyperspeedPresets.one} />
+          <div className="hyperspeed-overlay">
+            <TypewriterText text="Innovation Lab" speed={55} className="welcome-text" />
+          </div>
+        </div>
+      </section>
 
       <section className="innovation-hero" id="top">
         <h1>Innovation Lab 2025 – The Journey of Team Pratham</h1>

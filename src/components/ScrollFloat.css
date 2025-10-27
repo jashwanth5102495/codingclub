@@ -1,0 +1,13 @@
+.scroll-float { overflow: hidden; }
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: clamp(1.6rem, 8vw, 6rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.35;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(108, 99, 255, 0.8), 0 0 12px rgba(0, 229, 255, 0.8);
+}
+
+.char { display: inline-block; }

@@ -4,6 +4,7 @@ import Home from './pages/Home/Home.jsx';
 import CardNav from './components/CardNav.jsx';
 // import logo from './assets/logo.svg';
 import Innovation from './pages/Innovation/Innovation.jsx'
+import InnovationPage from './pages/Innovation/InnovationPage.jsx';
 
 const items = [
   {
@@ -63,6 +64,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/innovation" element={<Innovation />} />
+        <Route path="/innovation-page" element={<InnovationPage />} />
       </Routes>
     </>
   );
