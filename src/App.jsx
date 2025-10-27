@@ -43,7 +43,7 @@ const items = [
     bgImage: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=60',
     textColor: '#fff',
     links: [
-      { label: 'Innovation Page', ariaLabel: 'Innovation', href: '/innovation' },
+      { label: 'Innovation Page', ariaLabel: 'Innovation', href: '/innovation-page' },
     ],
   },
 ];

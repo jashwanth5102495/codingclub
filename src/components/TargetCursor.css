@@ -1,0 +1,44 @@
+/* Base target cursor container */
+.target-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  z-index: 9999;
+  transform-origin: center;
+}
+
+/* Dot center */
+.target-cursor-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.7), 0 0 16px rgba(0, 229, 255, 0.5);
+}
+
+/* Corners that lock onto target */
+.target-cursor-corner {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  border: 3px solid #6C63FF;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+.target-cursor-corner.tl { border-right: none; border-bottom: none; }
+.target-cursor-corner.tr { border-left: none; border-bottom: none; }
+.target-cursor-corner.br { border-left: none; border-top: none; }
+.target-cursor-corner.bl { border-right: none; border-top: none; }
+
+/* On dark background, make sure visibility is clear */
+@media (prefers-color-scheme: dark) {
+  .target-cursor-dot { background: #fff; }
+  .target-cursor-corner { border-color: #00E5FF; box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+}

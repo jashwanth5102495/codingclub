@@ -280,3 +280,10 @@
 .card-nav-home-icon:hover {
   background-color: #333;
 }
+.site-title {
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  color: #ffffff;
+  font-size: 16px;
+  text-transform: uppercase;
+}

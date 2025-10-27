@@ -48,7 +48,7 @@
   position: absolute;
   top: 160px; /* hangs from ring */
   width: 200px;
-  height: 280px;
+  height: 300px; /* increased to accommodate larger photo */
   background: #f8f8f8;
   color: #111;
   border-radius: 16px;
@@ -79,10 +79,14 @@
   100% { transform: rotate(-3deg); }
 }
 
+/* cursor-reactive behavior */
+.lanyard-card.reactive .lanyard-id { transition: transform 180ms ease; will-change: transform; }
+.lanyard-card.reactive .lanyard-id:hover { box-shadow: 0 20px 48px rgba(0,0,0,0.45); }
+
 /* photo box */
 .lanyard-photo {
-  width: 92px;
-  height: 92px;
+  width: 120px; /* was 92px */
+  height: 120px; /* was 92px */
   margin: 8px auto 12px auto;
   border-radius: 12px;
   overflow: hidden;

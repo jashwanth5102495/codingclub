@@ -4,8 +4,10 @@ import Orb from './Orb.jsx';
 import FuzzyText from '../../components/FuzzyText.jsx';
 import LanyardCard from '../../components/LanyardCard.jsx';
 import ScrollFloat from '../../components/ScrollFloat.jsx';
-import InfiniteMenu from '../../components/InfiniteMenu.jsx';
+import TargetCursor from '../../components/TargetCursor.jsx';
+
 import ScrambledText from '../../components/ScrambledText.jsx';
+import TeamList from '../../components/TeamList.jsx';
 
 export default function InnovationPage() {
   const items = [
@@ -36,6 +38,7 @@ export default function InnovationPage() {
   ];
   return (
     <div className="innovation-page innovation-page--new">
+      <TargetCursor spinDuration={2} hideDefaultCursor={true} />
       <section className="innovation-welcome" aria-label="Welcome to Innovation Lab">
         <div className="innovation-hero-bg" style={{ position: 'relative', width: '100%', height: '100%' }}>
           <Orb hoverIntensity={0.5} rotateOnHover={true} hue={0} forceHoverState={false} />
@@ -50,52 +53,47 @@ export default function InnovationPage() {
       <section className="orb-info-section" aria-label="About Innovation Lab">
         <div className="orb-info-left">
           <p>
-            The foundation of Innovation Lab 2025 was made possible through the visionary guidance of Mr. Naveen, Head of the Department, and the constant support of the dedicated faculty members, who encouraged the creation of a platform that empowers students to explore and innovate. Inspired by their mentorship, Jashwanth (MCA – 1st Year) and Madhu Sudhan Reddy (BCA – 3rd Year) transformed this vision into reality by organizing a Hackathon aimed at enhancing students’ technical exposure and creativity. Their initiative went beyond competition—it ignited a learning culture that inspired students to build confidently, collaborate effectively, and embrace innovation.
+            The journey of Innovation Lab 2025 began with the visionary support and encouragement of Mr. Naveen, Head of the Department, and the dedicated faculty members who believed in creating a platform where students could explore, learn, and grow beyond traditional academics. Their continuous motivation and guidance laid the foundation for a space that nurtures innovation, collaboration, and technical excellence.
+          </p>
+          <p>
+            Under the guidance of faculty coordinators Mr. Shashidhar, Mr. Abhishek  S R and , the initiative gained strong direction and structure, ensuring that every idea was supported with the right mentorship and resources. Their efforts played a vital role in shaping the lab into a hub of creativity and learning.
+          </p>
+          <p>
+            Inspired by this vision, two passionate students — Jashwanth (MCA – 1st Year) and Madhu Sudhan Reddy (BCA – 3rd Year) — took the initiative to bring the idea to life. They organized a Hackathon designed to enhance students’ technical exposure and ignite their creative potential.
+          </p>
+          <p>
+            What began as a single event soon evolved into a learning movement, where every participant, regardless of their experience level, gained the confidence to code, build, and innovate. Jashwanth and Madhu Sudhan’s dedication, combined with the unwavering support of the faculty, coordinators, and HOD, gave birth to what we now proudly call Innovation Lab 2025 — a true hub for future innovators and problem-solvers.
           </p>
         </div>
         <div className="orb-info-right">
-          <LanyardCard name="Student Coordinator" role="Coordinator" department="Innovation Lab" />
-          <LanyardCard name="Volunteer" role="Volunteer" department="Innovation Lab" />
+          <LanyardCard className="cursor-target" name="Mr. Shashidhar" role="Faculty Coordinator" department="Innovation Lab" />
+          <LanyardCard className="cursor-target" name="Mr. Abhishek S R" role="Faculty Coordinator" department="Innovation Lab" />
+          <LanyardCard className="cursor-target" name="Jashwanth" role="Student Coordinator" department="Innovation Lab" photoSrc="/jashwanth.png" />
+          <LanyardCard className="cursor-target" name="Madhu Sudhan Reddy" role="Volunteer" department="Innovation Lab" photoSrc="/md.png" />
         </div>
       </section>
 
-      <section className="team-section" aria-label="Team Parthum">
+      <section className="team-section" aria-label="Team Pratham">
         <div className="team-header">
           <ScrambledText
             className="scrambled-team"
             radius={100}
             duration={1.2}
             speed={0.5}
-            scrambleChars=".:"
+            scrambleChars=":."
           >
-            Team Parthum
+            Team Pratham
           </ScrambledText>
         </div>
         <div className="team-content">
-          <div className="team-left">
-            <ScrambledText
-              className="scrambled-paragraph"
-              radius={90}
-              duration={1.1}
-              speed={0.6}
-              scrambleChars=".:,;+-="
-            >
+          <div className="team-left centered">
+            <p className="team-text">
               After the day of coding, creativity, and collaboration, the Hackathon results were announced on 12th September 2025. From this event, a team of nine talented students emerged — forming Team Pratham, symbolizing “the first step toward excellence.”
-            </ScrambledText>
-            <ScrambledText
-              className="scrambled-paragraph"
-              radius={90}
-              duration={1.1}
-              speed={0.6}
-              scrambleChars=".:,;+-="
-            >
+            </p>
+            <p className="team-text">
               Team Pratham became a symbol of determination, teamwork, and learning. Under the mentorship of Jashwanth and Madhu Sudhan, the team held sessions every Monday and Wednesday, learning to write clean code, debug efficiently, and collaborate effectively on projects.
-            </ScrambledText>
-          </div>
-          <div className="team-right">
-            <div style={{ height: '600px', position: 'relative' }}>
-              <InfiniteMenu items={items} />
-            </div>
+            </p>
+            <TeamList />
           </div>
         </div>
       </section>

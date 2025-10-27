@@ -20,12 +20,6 @@ const CardNav = ({
   const navRef = useRef(null);
   const cardsRef = useRef([]);
   const tlRef = useRef(null);
-  const [dateTime, setDateTime] = useState(new Date().toLocaleString());
-
-  useEffect(() => {
-    const id = setInterval(() => setDateTime(new Date().toLocaleString()), 1000);
-    return () => clearInterval(id);
-  }, []);
 
   // Sync a body class to blur page content when nav expands
   useEffect(() => {
@@ -159,11 +153,13 @@ const CardNav = ({
             <div className="hamburger-line" />
           </div>
 
-          {/* Top-right controls: date-time ticker and Home icon */}
+          {/* Center brand text */}
+          <div className="logo-container" aria-label="Brand">
+            <div className="site-title">Decode.Design.Dominate</div>
+          </div>
+
+          {/* Top-right control: Home icon */}
           <div className="top-right">
-            <div className="date-ticker" aria-hidden="false" title="Current Date & Time">
-              <div className="date-ticker-inner">{dateTime}</div>
-            </div>
             <a href="/" className="card-nav-home-icon" aria-label="Home">
               <FaHome size={18} />
             </a>

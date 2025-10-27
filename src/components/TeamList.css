@@ -1,0 +1,110 @@
+/* Animated Team List */
+.team-list {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.animated-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.animated-list-item {
+  position: relative;
+}
+
+.animated-list-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #e6e6e6;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.animated-list-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.06);
+}
+
+.animated-list-item.active .animated-list-button {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.list-bullet {
+  font-size: 18px;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.list-label {
+  font-size: 14px;
+  letter-spacing: 1.2px;
+}
+
+/* Expand Panel */
+.expand-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: max-height 360ms ease, opacity 260ms ease, transform 260ms ease;
+}
+
+.expand-panel.open {
+  max-height: 600px; /* enough for grid */
+  opacity: 1;
+  transform: scale(1);
+  margin-top: 12px;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+/* Bounce Card placeholder style */
+.member-card {
+  background: radial-gradient(120% 120% at 20% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 60%, rgba(255,255,255,0) 100%), rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px;
+  backdrop-filter: blur(6px);
+  animation: bounceIn 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.member-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.member-name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(14px) scale(0.96); opacity: 0; }
+  60% { transform: translateY(-6px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(0) scale(1); }
+}

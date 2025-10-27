@@ -7,10 +7,11 @@ export default function Certificates() {
   const closeCert = () => setModalSrc('');
 
   const certs = [
-    { src: 'https://dummyimage.com/600x400/222/aaa&text=Cert+1', full: 'https://dummyimage.com/1200x800/111/ddd&text=Certificate+1', title: 'Winner Certificate — Sep 2025' },
-    { src: 'https://dummyimage.com/600x400/222/aaa&text=Cert+2', full: 'https://dummyimage.com/1200x800/111/ddd&text=Certificate+2', title: 'Participation — Aug 2025' },
-    { src: 'https://dummyimage.com/600x400/222/aaa&text=Cert+3', full: 'https://dummyimage.com/1200x800/111/ddd&text=Certificate+3', title: 'Mentor Certificate' },
-    { src: 'https://dummyimage.com/600x400/222/aaa&text=Cert+4', full: 'https://dummyimage.com/1200x800/111/ddd&text=Certificate+4', title: 'Project Showcase' },
+    { src: '/cer1.jpg', full: '/cer1.jpg', title: 'Certificate 1' },
+    { src: '/cer2.jpg', full: '/cer2.jpg', title: 'Certificate 2' },
+    { src: '/cer3.jpg', full: '/cer3.jpg', title: 'Certificate 3' },
+    { src: '/cer4.jpg', full: '/cer4.jpg', title: 'Certificate 4' },
+    { src: '/cer5.jpg', full: '/cer5.jpg', title: 'Certificate 5' },
   ];
 
   return (
