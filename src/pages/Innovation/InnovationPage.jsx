@@ -73,12 +73,24 @@ export default function InnovationPage() {
         </div>
         <div className="team-content">
           <div className="team-left">
-            <p>
+            <ScrambledText
+              className="scrambled-paragraph"
+              radius={90}
+              duration={1.1}
+              speed={0.6}
+              scrambleChars=".:,;+-="
+            >
               After the day of coding, creativity, and collaboration, the Hackathon results were announced on 12th September 2025. From this event, a team of nine talented students emerged — forming Team Pratham, symbolizing “the first step toward excellence.”
-            </p>
-            <p>
+            </ScrambledText>
+            <ScrambledText
+              className="scrambled-paragraph"
+              radius={90}
+              duration={1.1}
+              speed={0.6}
+              scrambleChars=".:,;+-="
+            >
               Team Pratham became a symbol of determination, teamwork, and learning. Under the mentorship of Jashwanth and Madhu Sudhan, the team held sessions every Monday and Wednesday, learning to write clean code, debug efficiently, and collaborate effectively on projects.
-            </p>
+            </ScrambledText>
           </div>
           <div className="team-right">
             <div style={{ height: '600px', position: 'relative' }}>

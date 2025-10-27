@@ -20,3 +20,13 @@
   will-change: transform;
   display: inline-block;
 }
+
+/* Paragraph variant for body copy */
+.text-block.scrambled-paragraph {
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  line-height: 1.8;
+  color: #d8d8d8;
+  text-shadow: none;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
