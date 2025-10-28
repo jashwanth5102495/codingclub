@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Events() {
+  const [eventModal, setEventModal] = useState(null);
+  const openEventModal = (title, details) => setEventModal({ title, details });
+  const closeEventModal = () => setEventModal(null);
+
   return (
     <section id="events" aria-labelledby="eventsTitle">
       <div className="section-title">
@@ -34,8 +38,8 @@ export default function Events() {
           <h3>Technical Quiz — Campus Round</h3>
           <p className="muted">Timed quiz covering DS, Algo, Web and ML. Top 3 winners get team invites.</p>
           <div className="card-actions">
-            <button className="btn-primary">Event Details</button>
-            <button className="btn">Download Syllabus</button>
+            <button className="btn-primary" onClick={() => openEventModal('Technical Quiz — Campus Round', 'Starts at 2 pm and ends at 4 pm. This event is conducted for shortlisting students for the Innovation Lab (coding club). Expect rounds focused on DS, Algorithms, Web, and ML. Bring your A-game!')}>Event Details</button>
+            <button className="btn" onClick={() => document.getElementById('certTitle')?.scrollIntoView({ behavior: 'smooth' })}>Results</button>
           </div>
         </article>
 
@@ -50,10 +54,10 @@ export default function Events() {
             color: '#fff'
           }}
         >
-          <h3>Project Showcase</h3>
-          <p className="muted">Team members present projects; winners get mentorship and resources.</p>
+          <h3>Gaming</h3>
+          <p className="muted">Upcoming in December. Details are not finalized yet — stay tuned.</p>
           <div className="card-actions">
-            <button className="btn-primary">View Projects</button>
+            <button className="btn-primary" onClick={() => openEventModal('Gaming — December', 'This event is upcoming in December. Details are not finalized yet. We will publish the full format, rules, and registration info soon.')}>Event Details</button>
             <button className="btn">Call for Entries</button>
           </div>
         </article>
@@ -77,6 +81,17 @@ export default function Events() {
           </div>
         </article>
       </div>
+
+      {eventModal && (
+        <div id="eventModal" className="cert-modal" aria-hidden={!eventModal} onClick={(e) => e.target.id === 'eventModal' && closeEventModal()}>
+          <div className="cert-modal-inner" role="dialog" aria-modal="true">
+            <button className="cert-close" onClick={closeEventModal} aria-label="Close">✕</button>
+            <h3 style={{ marginBottom: 8 }}>{eventModal.title}</h3>
+            <p className="muted" style={{ maxWidth: 640 }}>{eventModal.details}</p>
+            <div className="muted" style={{ marginTop: 10 }}>Click outside or ✕ to close</div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

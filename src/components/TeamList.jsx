@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import './TeamList.css';
 
 export default function TeamList() {
+  // Map member names to public image paths
+  const memberPhotos = {
+    'Purshottam V': '/ab.png',
+    'Bharath Chowdary': '/bh.jpg',
+    'Santhosh Gowda D A': '/ps.png',
+    'Sahana K': '/sa.png',
+    'Shaik Thannaz': '/ta.png',
+    'Aishwarya N': '/ash.png',
+    // Unmapped names will fallback to initials
+  };
+
   const teams = [
     {
       id: 1,
@@ -25,6 +36,7 @@ export default function TeamList() {
   ];
 
   const [expandedTeamId, setExpandedTeamId] = useState(null);
+  const [selectedMember, setSelectedMember] = useState(null);
 
   const toggleExpand = (id) => {
     setExpandedTeamId((prev) => (prev === id ? null : id));
@@ -54,19 +66,74 @@ export default function TeamList() {
                 aria-label={`${team.name} members`}
               >
                 <div className="members-grid">
-                  {team.members.map((member, index) => (
-                    <div key={member} className="member-card" style={{ animationDelay: `${index * 60}ms` }}>
-                      <div className="member-card-inner">
-                        <span className="member-name">{member}</span>
+                  {team.members.map((member, index) => {
+                    const photo = memberPhotos[member] || null;
+                    const initials = member
+                      .split(' ')
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join('')
+                      .toUpperCase();
+                    return (
+                      <div
+                        key={member}
+                        className="member-card"
+                        style={{ animationDelay: `${index * 60}ms` }}
+                        onClick={() => setSelectedMember({ name: member, photo, initials })}
+                      >
+                        <div className="member-card-inner">
+                          {photo ? (
+                            <img className="member-photo" src={photo} alt={`${member} photo`} />
+                          ) : (
+                            <div className="member-photo placeholder" aria-hidden="true">{initials}</div>
+                          )}
+                          <span className="member-name">{member}</span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
           </li>
         ))}
       </ul>
+
+      {selectedMember && (
+        <div
+          id="memberModal"
+          className="cert-modal"
+          aria-hidden={!selectedMember}
+          onClick={(e) => e.target.id === 'memberModal' && setSelectedMember(null)}
+        >
+          <div className="cert-modal-inner" role="dialog" aria-modal="true">
+            <button className="cert-close" onClick={() => setSelectedMember(null)} aria-label="Close">✕</button>
+            {selectedMember.photo ? (
+              <img
+                src={selectedMember.photo}
+                alt={`${selectedMember.name} photo`}
+                style={{ width: 320, height: 320, objectFit: 'cover', borderRadius: 0 }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: 320,
+                  height: 320,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)'
+                }}
+              >
+                <span style={{ fontSize: 48, fontWeight: 800, color: '#fff' }}>{selectedMember.initials}</span>
+              </div>
+            )}
+            <div className="muted" style={{ marginTop: 10, fontWeight: 700 }}>{selectedMember.name}</div>
+            <div className="muted" style={{ marginTop: 6 }}>Click outside or ✕ to close</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

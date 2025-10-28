@@ -66,7 +66,7 @@ export default function InnovationPage() {
           </p>
         </div>
         <div className="orb-info-right">
-          <LanyardCard className="cursor-target" name="Mr. Shashidhar" role="Faculty Coordinator" department="Innovation Lab" />
+          <LanyardCard className="cursor-target" name="Mr. Shashidhar" role="Faculty Coordinator" department="Innovation Lab" photoSrc="/sh.png" />
           <LanyardCard className="cursor-target" name="Mr. Abhishek S R" role="Faculty Coordinator" department="Innovation Lab" />
           <LanyardCard className="cursor-target" name="Jashwanth" role="Student Coordinator" department="Innovation Lab" photoSrc="/jashwanth.png" />
           <LanyardCard className="cursor-target" name="Madhu Sudhan Reddy" role="Volunteer" department="Innovation Lab" photoSrc="/md.png" />

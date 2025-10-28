@@ -19,11 +19,10 @@ export default function Hero() {
         </p>
         <h3>Join us as we explore, innovate, and lead the way into the world of technology!</h3>
         <div className="actions">
-          <a className="btn-primary" href="/#events">View Events</a>
+          <a className="btn-primary" href="/events-results">Events are Results</a>
         </div>
         <div className="hero-meta">
-          <div className="date-pill">Next Quiz: 29 October, 2025</div>
-          <div className="muted">Venue: College Tech Lab • Time: 10:00 AM</div>
+          {/* Removed Next Quiz and Venue details as requested */}
         </div>
       </div>
 
