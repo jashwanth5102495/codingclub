@@ -4,6 +4,35 @@ export default function EventsResults() {
   const [eventModal, setEventModal] = useState(null);
   const openEventModal = (title, details) => setEventModal({ title, details });
   const closeEventModal = () => setEventModal(null);
+  const [showQuizResults, setShowQuizResults] = useState(false);
+  const shortlistedStudents = [
+    { name: 'Sai Mounish Ashok', course: 'BCA', university: 'BNU', year: '1st Year' },
+    { name: 'Vinitha', course: 'BCA', university: 'BCU', year: '1st Year' },
+    { name: 'Taskeen Sultana', course: 'BCA', university: 'BCU', year: '2nd Year' },
+    { name: 'Akaash S', course: 'BCA', university: 'BCU', year: '2nd Year' },
+    { name: 'Pallavi H', course: 'BCA', university: 'BCU', year: '2nd Year' },
+    { name: 'Prakruth J V', course: 'BCA', university: 'BCU', year: '2nd Year' },
+    { name: 'Shilpa C', course: 'BCA', university: 'BCU', year: '2nd Year' },
+    { name: 'Zaid Shariff', course: 'BCA', university: 'BCU', year: '2nd Year' },
+    { name: 'Sreejith Biju', course: 'BCA', university: 'BNU', year: '3rd Year' },
+    { name: 'Snehith Sanu V', course: 'BCA', university: 'BNU', year: '3rd Year' },
+    { name: 'Nilen George', course: 'BCA', university: 'BNU', year: '3rd Year' },
+    { name: 'Anindita Maity', course: 'BCA', university: 'BCU', year: '3rd Year' },
+    { name: 'Kusum Kurelekan', course: 'BCA', university: 'BCU', year: '3rd Year' },
+    { name: 'Mayousha Sreekumar', course: 'BCA', university: 'BNU', year: '3rd Year' },
+    { name: 'Anjana K M', course: 'BCA', university: 'BNU', year: '3rd Year' },
+    { name: 'S L Vandana', course: 'BCA', university: 'BCU', year: '3rd Year' },
+    { name: 'Nimisha', course: 'BCA', university: 'BCU', year: '3rd Year' },
+    { name: 'Muttu', course: 'BCA', university: 'BCU', year: '3rd Year' },
+    { name: 'Prem Gaurao Sahoo', course: 'BCA', university: 'BCU', year: '3rd Year' },
+    { name: 'Akshay K Anil', course: 'BCA', university: '—', year: '3rd Year' },
+    { name: 'Shameera M', course: 'MCA', university: 'BCU', year: '1st Year' },
+    { name: 'Sai Bharath', course: 'MCA', university: 'BCU', year: '1st Year' },
+    { name: 'Sagarika Giri', course: 'BCA', university: 'BCU', year: '1st Year' }
+  ];
+  const thStyle = { padding: '10px 12px', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.06)', fontWeight: 700 };
+  const tdStyle = { padding: '10px 12px', borderBottom: '1px solid rgba(255,255,255,0.08)' };
+  const tableWrapStyle = { marginTop: 12, overflowX: 'auto', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10 };
 
   return (
     <main className="events-results" aria-label="Events and Results">
@@ -18,7 +47,7 @@ export default function EventsResults() {
             <p className="muted">Timed quiz covering DS, Algo, Web and ML. Top performers get team invites.</p>
             <div className="card-actions">
               <button className="btn-primary" onClick={() => openEventModal('Technical Quiz — Campus Round', 'Starts at 2 pm and ends at 4 pm. This event is conducted for shortlisting students for the Innovation Lab (coding club). Expect rounds focused on DS, Algorithms, Web, and ML. Bring your A-game!')}>Event Details</button>
-              <button className="btn" onClick={() => document.getElementById('resultsTitle')?.scrollIntoView({ behavior: 'smooth' })}>Results</button>
+              <button className="btn" onClick={() => { setShowQuizResults(true); document.getElementById('resultsTitle')?.scrollIntoView({ behavior: 'smooth' }); }}>Results</button>
             </div>
           </article>
           <article className="card" style={{ color: '#fff', backgroundImage: 'linear-gradient(180deg, rgba(7,7,20,0.45), rgba(7,7,20,0.68)), url("https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=1200&q=60")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -37,6 +66,36 @@ export default function EventsResults() {
           <h2 id="resultsTitle">Results</h2>
           <div className="section-sub">Winners and highlights from recent events.</div>
         </div>
+        {showQuizResults && (
+          <div style={tableWrapStyle}>
+            <h3 style={{ margin: '12px 12px 0' }}>Technical Quiz — Shortlisted Students</h3>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }} aria-label="Technical Quiz shortlist">
+              <thead>
+                <tr>
+                  <th style={thStyle}>#</th>
+                  <th style={thStyle}>Name</th>
+                  <th style={thStyle}>Course</th>
+                  <th style={thStyle}>University</th>
+                  <th style={thStyle}>Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                {shortlistedStudents.map((s, i) => (
+                  <tr key={`${s.name}-${i}`} style={{ background: i % 2 ? 'rgba(255,255,255,0.03)' : 'transparent' }}>
+                    <td style={tdStyle}>{i + 1}</td>
+                    <td style={tdStyle}>{s.name}</td>
+                    <td style={tdStyle}>{s.course}</td>
+                    <td style={tdStyle}>{s.university}</td>
+                    <td style={tdStyle}>{s.year}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style={{ padding: '10px 12px' }}>
+              <button className="btn" onClick={() => setShowQuizResults(false)}>Hide Results</button>
+            </div>
+          </div>
+        )}
         <div className="cert-grid">
           <div className="cert" tabIndex={0}>
             <img src="/cer1.jpg" alt="Winner Certificate" />

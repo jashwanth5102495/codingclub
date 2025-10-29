@@ -8,7 +8,7 @@ export default function TeamList() {
     'Bharath Chowdary': '/bh.jpg',
     'Santhosh Gowda D A': '/ps.png',
     'Sahana K': '/sa.png',
-    'Shaik Thannaz': '/ta.png',
+    'Shaik Thanaaz': '/ta.png',
     'Aishwarya N': '/ash.png',
     'Abhishek N': '/ab1.png',
     'Sahil Irshad': '/ka.png',
@@ -340,7 +340,7 @@ export default function TeamList() {
         </ul>
       </div>
     ),
-    'Shaik Thannaz': (
+    'Shaik Thanaaz': (
       <div>
         <h3>BCA Student | Aspiring Developer | AI & Frontend Enthusiast</h3>
         <h4 style={{marginTop:12}}>Introduction</h4>
@@ -503,7 +503,7 @@ export default function TeamList() {
         'Bharath Chowdary',
         'Santhosh Gowda D A',
         'Sahana K',
-        'Shaik Thannaz',
+        'Shaik Thanaaz',
         'Sai Likitha P V',
         'Aishwarya N',
         'Abhishek N',
