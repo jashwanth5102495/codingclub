@@ -23,7 +23,7 @@ export default function About() {
             Through our initiatives, students gain exposure to emerging technologies, collaborate on meaningful projects, and develop a mindset ready for the digital future. We take pride in fostering a community that learns, grows, and leads together.
             <br/>
             <br/>
-            FOUNDER: Principal sir - Dr. Channaveere Gowda B N and HOD - MR. Naveen M V
+            under the guidelines of Principal sir - Dr. Channaveere Gowda B N and HOD - MR. Naveen M V
             <br/>
             <br/>
             COORDINATORS: Shashidhar sir, Abhishek sir

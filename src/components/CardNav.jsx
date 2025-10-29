@@ -17,9 +17,18 @@ const CardNav = ({
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef(null);
   const cardsRef = useRef([]);
   const tlRef = useRef(null);
+
+  // Make navbar background more opaque after scrolling
+  useEffect(() => {
+    const onScroll = () => setIsScrolled((window.scrollY || 0) > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Sync a body class to blur page content when nav expands
   useEffect(() => {
@@ -138,7 +147,7 @@ const CardNav = ({
         aria-hidden={!isExpanded}
       />
 
-      <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
+      <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: isScrolled ? 'rgba(7,7,20,0.92)' : baseColor }}>
         <div className="card-nav-top">
           <div
             className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
@@ -146,7 +155,7 @@ const CardNav = ({
             role="button"
             aria-label={isExpanded ? 'Close menu' : 'Open menu'}
             tabIndex={0}
-            style={{ color: menuColor || '#000' }}
+            style={{ color: isScrolled ? '#fff' : (menuColor || '#000') }}
           >
             <div className="hamburger-line" />
             <div className="hamburger-line" />

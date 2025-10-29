@@ -40,6 +40,7 @@
   overflow: hidden;
   will-change: height;
   z-index: 1101; /* ensure nav stays above the backdrop overlay */
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 /* Ensure no frosted blur on nav container even if glass-box is present */
 .card-nav.glass-box { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }

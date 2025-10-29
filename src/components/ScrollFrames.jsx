@@ -4,7 +4,7 @@ import './ScrollFrames.css';
 // Scroll-driven frame animation using sequence of JPGs
 // Frames served from Vite public folder: /public/background-flow/ezgif-frame-001.jpg ... 067.jpg
 
-const FRAME_COUNT = 67;
+const FRAME_COUNT = 145;
 
 function pad3(n) {
   return String(n).padStart(3, '0');
@@ -12,7 +12,7 @@ function pad3(n) {
 
 function getSrc(i) {
   const base = import.meta.env.BASE_URL || '/';
-  return `${base}background-flow/ezgif-frame-${pad3(i)}.jpg`;
+  return `${base}background-flow/flow2/ezgif-frame-${pad3(i)}.jpg`;
 }
 
 export default function ScrollFrames({ anchorStart = null, anchorEnd = null }) {
