@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Hero() {
   const scrollToAbout = () => {
     const el = document.getElementById('about');
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
+  const [showCredits, setShowCredits] = useState(false);
 
   return (
     <section className="hero" id="top" aria-label="Hero">
+      <img
+        src="/team.png"
+        alt="Team Anveshak info"
+        className="team-icon"
+        onClick={() => setShowCredits((s) => !s)}
+      />
+      {showCredits && (
+        <div className="team-credits" role="dialog" aria-modal="true" aria-label="Team credits">
+          <button className="cert-close" onClick={() => setShowCredits(false)} aria-label="Close">✕</button>
+          <div className="team-credits-inner">
+            <p style={{ marginBottom: 8 }}>
+              This project was developed within 48 hours as part of a rapid development challenge. The team followed the Agile workflow under the guidance of Mr. Omkareshwar Kori (Professor), ensuring continuous collaboration and iterative progress throughout the process.
+            </p>
+            <p style={{ marginBottom: 8 }}>
+              If any student wishes to contribute, enhance, or be a part of this journey, you are welcome to clone the project repository from the link below and develop further:
+              <br/>
+              <strong>GitHub Repository:</strong> <a href="https://github.com/InnovationLab2025/Anveshak_web_app.git" target="_blank" rel="noopener noreferrer">InnovationLab2025/Anveshak_web_app</a>
+            </p>
+            <p style={{ marginBottom: 12 }}>
+              For push access or contribution rights, please contact the Team Lead.
+            </p>
+            <div>Team Lead : Jashwanth (MCA), Madhu Sudhan Reddy (BCA)</div>
+            <div>Project Architectural : Jashwanth</div>
+            <div>Base project creation : Purshottam V, Santhosh Gowda D A</div>
+            <div>Modern U.I enhancements and Animations : Jashwanth</div>
+            <div>Data Gathering : Sai Likitha, Sahana</div>
+            <div>forntend styling : Aishwarya, Shaik Thanaaz, Abhishek N</div>
+            <div>Deployment : Madhu Sudhan Reddy, Bharath Chowdary</div>
+            <div>testing : Bharath Chowdary, Abhishek N, Sahil Irshad</div>
+          </div>
+        </div>
+      )}
+
       <div className="hero-left reveal">
         <div className="kicker">ANVESHAK CLUB • Decode.Design.Dominate</div>
         <h1>Welcome to Team Anveshak</h1>

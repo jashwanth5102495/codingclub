@@ -491,6 +491,49 @@ export default function TeamList() {
           <li>Phone: +91 8792195795</li>
         </ul>
       </div>
+    ),
+    'Sai Likitha P V': (
+      <div>
+        <h3>Likitha Pedapati — Professional Profile</h3>
+        <p>Hi, I'm Likitha Pedapati — a passionate learner specializing in Artificial Intelligence and Machine Learning. I thrive on curiosity, creativity, and a drive to build technology that makes life smarter and simpler.</p>
+        <p>My core interest lies in front-end web development, where I merge logic with design to create intuitive, user-friendly digital experiences.</p>
+        <p>I believe technology is a bridge between imagination and impact. My goal is to grow into a developer who transforms ideas into meaningful, real-world solutions. With a strong foundation in AI and ML, I’m constantly exploring new tools and techniques to stay ahead in the tech landscape.</p>
+        <h4 style={{marginTop:12}}>Tech Skills</h4>
+        <ul>
+          <li>Programming Languages: C, Java, Python</li>
+          <li>Databases &amp; Data Structures: SQL</li>
+          <li>Networking &amp; Systems: Computer Networking, Operating Systems</li>
+          <li>Front-End Development: HTML, CSS, JavaScript (building creative interfaces)</li>
+          <li>JSON prompts</li>
+          <li>Git and GitHub commands</li>
+        </ul>
+        <h4 style={{marginTop:12}}>Strengths</h4>
+        <ul>
+          <li>Analytical and creative problem-solving mindset</li>
+          <li>Solid foundation in AI and ML concepts</li>
+          <li>Strong communication and teamwork abilities</li>
+          <li>Attention to detail with design-focused thinking</li>
+          <li>Self-motivated learner with adaptability and curiosity</li>
+        </ul>
+        <h4 style={{marginTop:12}}>Education &amp; Certifications</h4>
+        <ul>
+          <li>Power BI Certification – Completed via Alison</li>
+          <li>Python Programming – Certified by AI for Techies</li>
+          <li>Freelancing Fundamentals – Completed via Alison</li>
+          <li>Learning Artificial Intelligence – Certified by Genz Educatewing</li>
+        </ul>
+        <h4 style={{marginTop:12}}>Beyond Tech</h4>
+        <ul>
+          <li>Passionate dancer with a flair for creative movement</li>
+          <li>Avid reader interested in tech and personal growth books</li>
+          <li>Music lover who finds inspiration in melodies</li>
+          <li>Traveler with curiosity for culture and new experiences</li>
+        </ul>
+        <h4 style={{marginTop:12}}>Connect</h4>
+        <ul>
+          <li>Email: <a href="mailto:pvsailikitha25@gmail.com">pvsailikitha25@gmail.com</a></li>
+        </ul>
+      </div>
     )
   };
 

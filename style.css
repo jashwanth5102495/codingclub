@@ -632,6 +632,36 @@ footer{padding:28px;text-align:center;color:var(--muted-2);font-size:14px}
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Team icon and credits overlay */
+.hero { position: relative; }
+.team-icon{
+  position:absolute; right:18px; top:18px; width:36px; height:36px; cursor:pointer;
+  animation: subtleShake 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.45));
+  opacity:0.95;
+}
+.team-icon:hover{opacity:1}
+@keyframes subtleShake{
+  0%{ transform: translate(0,0) rotate(0deg); }
+  20%{ transform: translate(0.6px,-0.6px) rotate(0.6deg); }
+  40%{ transform: translate(-0.6px,0.8px) rotate(-0.6deg); }
+  60%{ transform: translate(0.4px,-0.4px) rotate(0.4deg); }
+  80%{ transform: translate(-0.4px,0.6px) rotate(-0.4deg); }
+  100%{ transform: translate(0,0) rotate(0deg); }
+}
+.team-credits{
+  position:absolute; right:18px; top:72px; z-index:1200; width:min(360px, 90vw);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 14px; box-shadow: 0 16px 40px rgba(0,0,0,0.55);
+}
+.team-credits-inner{
+  padding:16px; line-height:1.7; color:#e9f1ff; font-size:14px;
+}
+.team-credits .cert-close{ position:absolute; right:8px; top:8px; }
+
 /* === Gallery Boxed Section === */
 .gallery-section .gallery-box {
   position: relative;
