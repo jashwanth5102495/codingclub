@@ -86,7 +86,8 @@ export default function Home() {
 
   return (
     <main style={{ color: '#fff', backgroundColor: '#000' }}>
-      <ScrollFrames anchorStart="#top" anchorEnd="#about" />
+      <ScrollFrames folder="background-flow/flow2" count={100} anchorStart="#top" anchorEnd="#about" />
+      <ScrollFrames folder="bg flow part1" count={46} anchorStart="#about" anchorEnd="#intro-glitch" />
       <Hero />
       <About />
 

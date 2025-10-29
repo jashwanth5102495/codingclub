@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -6,6 +7,11 @@ export default function Hero() {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   const [showCredits, setShowCredits] = useState(false);
+  const navigate = useNavigate();
+
+  const handleTeamIconClick = () => {
+    navigate('/team-info');
+  };
 
   return (
     <section className="hero" id="top" aria-label="Hero">
@@ -13,7 +19,7 @@ export default function Hero() {
         src="/team.png"
         alt="Team Anveshak info"
         className="team-icon"
-        onClick={() => setShowCredits((s) => !s)}
+        onClick={handleTeamIconClick}
       />
       {showCredits && (
         <div className="team-credits" role="dialog" aria-modal="true" aria-label="Team credits">
@@ -45,6 +51,7 @@ export default function Hero() {
       <div className="hero-left reveal">
         <div className="kicker">ANVESHAK CLUB • Decode.Design.Dominate</div>
         <h1>Welcome to Team Anveshak</h1>
+        
         <h2>Exploring,Innovating, and Evolving through Technology</h2>
         <p className="lead">
           Team Anveshak is the official technical team of Akash Global College of Management and Science, launched on April 11th, 2025, with a mission to inspire innovation and empower students through technology-driven learning.

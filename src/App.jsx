@@ -6,6 +6,7 @@ import CardNav from './components/CardNav.jsx';
 import Innovation from './pages/Innovation/Innovation.jsx'
 import InnovationPage from './pages/Innovation/InnovationPage.jsx';
 import EventsResults from './pages/EventsResults.jsx';
+import TeamInfo from './pages/Home/TeamInfo.jsx';
 
 const items = [
   {
@@ -67,6 +68,7 @@ export default function App() {
         <Route path="/innovation" element={<Innovation />} />
         <Route path="/innovation-page" element={<InnovationPage />} />
         <Route path="/events-results" element={<EventsResults />} />
+        <Route path="/team-info" element={<TeamInfo />} />
       </Routes>
     </>
   );
