@@ -30,7 +30,8 @@ export default function EventsResults() {
     { name: 'Sai Bharath', course: 'MCA', university: 'BCU', year: '1st Year' },
     { name: 'Sagarika Giri', course: 'BCA', university: 'BCU', year: '1st Year' },
     { name: 'Devaraj M S', course: 'MCA', university: 'BCU', year: '1st Year' },
-    { name: 'Chikkanna R', course: 'BCA', university: 'BNU', year: '2nd Year' }
+    { name: 'Chikkanna R', course: 'BCA', university: 'BNU', year: '2nd Year' },
+    { name: 'Manya Shree', course: 'BCA', university: 'BNU', year: '2nd Year' },
   ];
   const thStyle = { padding: '10px 12px', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.06)', fontWeight: 700 };
   const tdStyle = { padding: '10px 12px', borderBottom: '1px solid rgba(255,255,255,0.08)' };
