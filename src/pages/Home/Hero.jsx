@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -60,7 +60,7 @@ export default function Hero() {
         </p>
         <h3>Join us as we explore, innovate, and lead the way into the world of technology!</h3>
         <div className="actions">
-          <a className="btn-primary" href="/events-results">Events are Results</a>
+          <Link className="btn-primary" to="/events-results">Events and Results</Link>
         </div>
         <div className="hero-meta">
           {/* Removed Next Quiz and Venue details as requested */}
